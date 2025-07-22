@@ -1,1 +1,52 @@
-
+{
+  "categories": [
+    {
+      "id": "business",
+      "name": "Business",
+      "icon": "💼",
+      "description": "Tools for productivity, project management, and business operations",
+      "tags": ["productivity", "project-management", "team-collaboration", "communication", "crm", "automation", "analytics", "scheduling"],
+      "color": "#667eea"
+    },
+    {
+      "id": "design",
+      "name": "Design",
+      "icon": "🎨",
+      "description": "Creative tools for graphics, UI/UX, and visual content",
+      "tags": ["graphics", "ui-ux", "prototyping", "icons", "fonts", "colors", "wireframing", "visual-design"],
+      "color": "#764ba2"
+    },
+    {
+      "id": "development",
+      "name": "Development",
+      "icon": "💻",
+      "description": "Coding tools, frameworks, and developer resources",
+      "tags": ["code-editor", "framework", "library", "api", "database", "hosting", "version-control", "testing"],
+      "color": "#f093fb"
+    },
+    {
+      "id": "marketing",
+      "name": "Marketing",
+      "icon": "📈",
+      "description": "SEO, analytics, social media, and marketing automation",
+      "tags": ["seo", "social-media", "email", "analytics", "content-marketing", "advertising", "conversion"],
+      "color": "#4facfe"
+    },
+    {
+      "id": "finance",
+      "name": "Finance",
+      "icon": "💰",
+      "description": "Financial planning, accounting, and investment tools",
+      "tags": ["accounting", "invoicing", "budgeting", "investment", "cryptocurrency", "expense-tracking", "financial-planning"],
+      "color": "#43e97b"
+    },
+    {
+      "id": "education",
+      "name": "Education",
+      "icon": "📚",
+      "description": "Learning resources, courses, and educational platforms",
+      "tags": ["learning", "courses", "tutorials", "documentation", "certification", "skills", "training"],
+      "color": "#fa709a"
+    }
+  ]
+}
