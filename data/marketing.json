@@ -1,0 +1,109 @@
+{
+  "category": "marketing",
+  "name": "Marketing Tools",
+  "description": "Tools for digital marketing, social media management, email campaigns, and analytics",
+  "icon": "📢",
+  "tools": [
+    {
+      "id": "mailchimp",
+      "name": "Mailchimp",
+      "url": "https://mailchimp.com",
+      "description": "All-in-one marketing platform for email marketing, automation, and customer insights.",
+      "icon": "🐵",
+      "tags": ["email-marketing", "automation", "customer-insights", "campaigns"],
+      "rating": 4.5,
+      "isPremium": false
+    },
+    {
+      "id": "hootsuite",
+      "name": "Hootsuite",
+      "url": "https://hootsuite.com",
+      "description": "Social media management platform for scheduling posts, monitoring mentions, and analytics.",
+      "icon": "🦉",
+      "tags": ["social-media-management", "scheduling", "analytics", "monitoring"],
+      "rating": 4.2,
+      "isPremium": true
+    },
+    {
+      "id": "buffer",
+      "name": "Buffer",
+      "url": "https://buffer.com",
+      "description": "Social media scheduling and analytics tool for growing your audience and brand.",
+      "icon": "📅",
+      "tags": ["social-media-scheduling", "analytics", "content-planning", "multi-platform"],
+      "rating": 4.4,
+      "isPremium": false
+    },
+    {
+      "id": "google-ads",
+      "name": "Google Ads",
+      "url": "https://ads.google.com",
+      "description": "Online advertising platform for creating and managing pay-per-click advertising campaigns.",
+      "icon": "🎯",
+      "tags": ["ppc-advertising", "search-ads", "display-ads", "google"],
+      "rating": 4.1,
+      "isPremium": false
+    },
+    {
+      "id": "facebook-ads-manager",
+      "name": "Facebook Ads Manager",
+      "url": "https://business.facebook.com/adsmanager",
+      "description": "Advertising platform for creating, managing, and tracking Facebook and Instagram ad campaigns.",
+      "icon": "📘",
+      "tags": ["social-media-ads", "facebook", "instagram", "campaign-management"],
+      "rating": 4.0,
+      "isPremium": false
+    },
+    {
+      "id": "semrush",
+      "name": "SEMrush",
+      "url": "https://semrush.com",
+      "description": "All-in-one digital marketing toolkit for SEO, PPC, content marketing, and competitive research.",
+      "icon": "🔍",
+      "tags": ["seo", "competitive-analysis", "keyword-research", "digital-marketing"],
+      "rating": 4.6,
+      "isPremium": true
+    },
+    {
+      "id": "ahrefs",
+      "name": "Ahrefs",
+      "url": "https://ahrefs.com",
+      "description": "SEO toolset for backlink analysis, keyword research, and competitor analysis.",
+      "icon": "🔗",
+      "tags": ["seo", "backlink-analysis", "keyword-research", "competitor-analysis"],
+      "rating": 4.7,
+      "isPremium": true
+    },
+    {
+      "id": "convertkit",
+      "name": "ConvertKit",
+      "url": "https://convertkit.com",
+      "description": "Email marketing platform designed for creators, bloggers, and online entrepreneurs.",
+      "icon": "📧",
+      "tags": ["email-marketing", "creators", "automation", "landing-pages"],
+      "rating": 4.4,
+      "isPremium": false
+    },
+    {
+      "id": "hotjar",
+      "name": "Hotjar",
+      "url": "https://hotjar.com",
+      "description": "Website analytics and user feedback tool with heatmaps, recordings, and surveys.",
+      "icon": "🔥",
+      "tags": ["website-analytics", "heatmaps", "user-feedback", "conversion-optimization"],
+      "rating": 4.3,
+      "isPremium": false
+    },
+    {
+      "id": "canva-pro",
+      "name": "Canva Pro",
+      "url": "https://canva.com/pro",
+      "description": "Advanced design platform for creating marketing materials, social media content, and brand assets.",
+      "icon": "🎨",
+      "tags": ["design", "marketing-materials", "social-media-content", "branding"],
+      "rating": 4.5,
+      "isPremium": true
+    }
+  ],
+  "lastUpdated": "2025-07-22"
+}
