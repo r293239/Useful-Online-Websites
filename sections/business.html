@@ -1,1 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Tools - ToolVaults</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .page-header {
+            text-align: center;
+            padding: 3rem 0;
+            color: white;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .search-filter-bar {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            outline: none;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .filter-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .tag:hover, .tag.active {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .tools-container {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .tool-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #eee;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .tool-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .tool-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .tool-info h3 {
+            margin: 0;
+            font-size: 1.3rem;
+            color: #333;
+        }
+
+        .tool-info .url {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .tool-description {
+            color: #555;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .tool-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .tool-tag {
+            background: #f0f0f0;
+            color: #666;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        .tool-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .visit-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .visit-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #ffa500;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+        }
+
+        footer {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem 0;
+            text-align: center;
+            color: white;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .search-filter-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .search-box {
+                min-width: auto;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">🔧 ToolVaults</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#categories">Browse</a></li>
+                <li><a href="/admin">Submit Tool</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>
+                    <span>💼</span>
+                    Business Tools
+                </h1>
+                <p>Tools for productivity, project management, and business operations</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="search-filter-bar">
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search business tools..." id="searchInput">
+                </div>
+                <div class="filter-tags" id="filterTags">
+                    <button class="tag active" data-tag="all">All</button>
+                    <button class="tag" data-tag="productivity">Productivity</button>
+                    <button class="tag" data-tag="project-management">Project Management</button>
+                    <button class="tag" data-tag="communication">Communication</button>
+                    <button class="tag" data-tag="analytics">Analytics</button>
+                    <button class="tag" data-tag="automation">Automation</button>
+                </div>
+            </div>
+
+            <div class="tools-container">
+                <div class="loading" id="loading">
+                    <i class="fas fa-spinner fa-spin"></i> Loading business tools...
+                </div>
+                <div class="tools-grid" id="toolsGrid" style="display: none;">
+                    <!-- Tools will be loaded here -->
+                </div>
+                <div class="no-results" id="noResults" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <h3>No tools found</h3>
+                    <p>Try adjusting your search or filters</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 ToolVaults. Community-curated with ❤️</p>
+        </div>
+    </footer>
+
+    <script>
+        let allTools = [];
+        let filteredTools = [];
+        let currentTag = 'all';
+
+        // Load tools from JSON
+        async function loadTools() {
+            try {
+                const response = await fetch('/data/business.json');
+                if (response.ok) {
+                    const data = await response.json();
+                    allTools = data.tools || [];
+                    filteredTools = [...allTools];
+                    displayTools();
+                } else {
+                    showNoResults();
+                }
+            } catch (error) {
+                console.error('Error loading tools:', error);
+                showNoResults();
+            }
+        }
+
+        // Display tools in grid
+        function displayTools() {
+            const loading = document.getElementById('loading');
+            const toolsGrid = document.getElementById('toolsGrid');
+            const noResults = document.getElementById('noResults');
+
+            loading.style.display = 'none';
+
+            if (filteredTools.length === 0) {
+                toolsGrid.style.display = 'none';
+                noResults.style.display = 'block';
+                return;
+            }
+
+            noResults.style.display = 'none';
+            toolsGrid.style.display = 'grid';
+            toolsGrid.innerHTML = '';
+
+            filteredTools.forEach(tool => {
+                const toolCard = createToolCard(tool);
+                toolsGrid.appendChild(toolCard);
+            });
+        }
+
+        // Create tool card element
+        function createToolCard(tool) {
+            const card = document.createElement('div');
+            card.className = 'tool-card';
+
+            const tagsHtml = tool.tags ? tool.tags.map(tag => 
+                `<span class="tool-tag">${tag}</span>`
+            ).join('') : '';
+
+            const rating = tool.rating ? 
+                `<div class="rating">
+                    <i class="fas fa-star"></i>
+                    <span>${tool.rating}/5</span>
+                </div>` : '';
+
+            card.innerHTML = `
+                <div class="tool-header">
+                    <div class="tool-icon">
+                        ${tool.icon || '🔧'}
+                    </div>
+                    <div class="tool-info">
+                        <h3>${tool.name}</h3>
+                        <div class="url">${tool.url}</div>
+                    </div>
+                </div>
+                <div class="tool-description">
+                    ${tool.description}
+                </div>
+                <div class="tool-tags">
+                    ${tagsHtml}
+                </div>
+                <div class="tool-actions">
+                    <a href="${tool.url}" target="_blank" class="visit-btn">
+                        Visit Tool <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    ${rating}
+                </div>
+            `;
+
+            return card;
+        }
+
+        // Filter tools by tag
+        function filterByTag(tag) {
+            if (tag === 'all') {
+                filteredTools = [...allTools];
+            } else {
+                filteredTools = allTools.filter(tool => 
+                    tool.tags && tool.tags.includes(tag)
+                );
+            }
+            
+            const searchQuery = document.getElementById('searchInput').value.trim();
+            if (searchQuery) {
+                searchTools(searchQuery);
+            } else {
+                displayTools();
+            }
+        }
+
+        // Search tools
+        function searchTools(query) {
+            if (!query) {
+                filteredTools = currentTag === 'all' ? [...allTools] : 
+                    allTools.filter(tool => tool.tags && tool.tags.includes(currentTag));
+            } else {
+                const searchQuery = query.toLowerCase();
+                let toolsToSearch = currentTag === 'all' ? allTools : 
+                    allTools.filter(tool => tool.tags && tool.tags.includes(currentTag));
+                
+                filteredTools = toolsToSearch.filter(tool =>
+                    tool.name.toLowerCase().includes(searchQuery) ||
+                    tool.description.toLowerCase().includes(searchQuery) ||
+                    (tool.tags && tool.tags.some(tag => tag.toLowerCase().includes(searchQuery)))
+                );
+            }
+            displayTools();
+        }
+
+        // Show no results message
+        function showNoResults() {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('toolsGrid').style.display = 'none';
+            document.getElementById('noResults').style.display = 'block';
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load tools
+            loadTools();
+
+            // Check for search query in URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchQuery = urlParams.get('search');
+            if (searchQuery) {
+                document.getElementById('searchInput').value = searchQuery;
+                searchTools(searchQuery);
+            }
+
+            // Search input
+            document.getElementById('searchInput').addEventListener('input', (e) => {
+                searchTools(e.target.value);
+            });
+
+            // Filter tags
+            document.getElementById('filterTags').addEventListener('click', (e) => {
+                if (e.target.classList.contains('tag')) {
+                    // Update active tag
+                    document.querySelectorAll('.tag').forEach(tag => tag.classList.remove('active'));
+                    e.target.classList.add('active');
+                    
+                    currentTag = e.target.dataset.tag;
+                    filterByTag(currentTag);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
