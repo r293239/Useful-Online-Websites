@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToolHub - Discover Amazing Online Tools</title>
+    <title>ToolVaults - Discover Amazing Online Tools</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,10 +13,11 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: #f8fafc;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
         }
 
         .container {
@@ -25,8 +27,9 @@
         }
 
         header {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -36,204 +39,209 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: bold;
-            color: #2563eb;
+            color: white;
+            text-decoration: none;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
             list-style: none;
+            gap: 2rem;
         }
 
         .nav-links a {
+            color: white;
             text-decoration: none;
-            color: #64748b;
-            font-weight: 500;
-            transition: color 0.3s;
+            transition: opacity 0.3s;
         }
 
         .nav-links a:hover {
-            color: #2563eb;
+            opacity: 0.8;
         }
 
         .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 4rem 0;
             text-align: center;
+            padding: 4rem 0;
+            color: white;
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
+            font-weight: 700;
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 2rem;
             opacity: 0.9;
         }
 
-        .cta-button {
-            display: inline-block;
-            background: #10b981;
-            color: white;
-            padding: 0.8rem 2rem;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: background 0.3s;
-        }
-
-        .cta-button:hover {
-            background: #059669;
-        }
-
-        .sections {
-            padding: 4rem 0;
-        }
-
-        .sections h2 {
-            text-align: center;
-            margin-bottom: 3rem;
-            font-size: 2.5rem;
-            color: #1e293b;
-        }
-
-        .section-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .section-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-        }
-
-        .section-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-        }
-
-        .section-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #2563eb;
-        }
-
-        .section-card p {
-            color: #64748b;
-            margin-bottom: 1.5rem;
-        }
-
-        .tool-count {
-            background: #e0f2fe;
-            color: #0277bd;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .search-bar {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            margin-bottom: 2rem;
+        .search-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 1rem;
+            max-width: 600px;
+            margin: 2rem auto;
+            display: flex;
+            align-items: center;
         }
 
         .search-input {
-            width: 100%;
+            flex: 1;
+            background: none;
+            border: none;
             padding: 1rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            color: white;
             outline: none;
-            transition: border-color 0.3s;
         }
 
-        .search-input:focus {
-            border-color: #2563eb;
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
         }
 
-        .recent-tools {
+        .search-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            border: none;
+            border-radius: 50px;
+            padding: 1rem 2rem;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .search-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .categories {
             background: white;
+            margin: 2rem 0;
+            border-radius: 20px;
             padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
-        .recent-tools h3 {
-            margin-bottom: 1.5rem;
-            color: #1e293b;
+        .categories h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            color: #333;
         }
 
-        .tool-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-            border-bottom: 1px solid #e2e8f0;
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
 
-        .tool-item:last-child {
-            border-bottom: none;
+        .category-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 15px;
+            padding: 2rem;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
         }
 
-        .tool-info h4 {
-            color: #2563eb;
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .category-card:hover::before {
+            opacity: 1;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .category-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .category-card p {
+            opacity: 0.9;
+            position: relative;
+        }
+
+        .tool-count {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .stats {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            color: white;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
             margin-bottom: 0.5rem;
         }
 
-        .tool-info p {
-            color: #64748b;
-            font-size: 0.9rem;
-        }
-
-        .tool-link {
-            background: #f1f5f9;
-            color: #2563eb;
-            padding: 0.5rem 1rem;
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .tool-link:hover {
-            background: #e2e8f0;
-        }
-
         footer {
-            background: #1e293b;
-            color: white;
-            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
             padding: 2rem 0;
+            text-align: center;
+            color: white;
+            margin-top: 2rem;
         }
 
         @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
             .nav-links {
                 display: none;
             }
             
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .section-grid {
+            .category-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -241,174 +249,154 @@
 </head>
 <body>
     <header>
-        <div class="container">
-            <nav>
-                <div class="logo">ToolHub</div>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#sections">Browse</a></li>
-                    <li><a href="#submit">Submit Tool</a></li>
-                </ul>
-            </nav>
-        </div>
+        <nav class="container">
+            <a href="/" class="logo">🔧 ToolVaults</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#categories">Browse</a></li>
+                <li><a href="/admin">Submit Tool</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <section class="hero" id="home">
-        <div class="container">
-            <h1>Discover Amazing Online Tools</h1>
-            <p>Community-curated directory of the best tools for every need</p>
-            <a href="#sections" class="cta-button">Explore Tools</a>
-        </div>
-    </section>
-
-    <section class="sections" id="sections">
-        <div class="container">
-            <div class="search-bar">
-                <input type="text" id="searchInput" class="search-input" placeholder="Search for tools...">
-            </div>
-
-            <h2>Browse by Category</h2>
-            <div class="section-grid" id="sectionGrid">
-                <!-- Sections will be loaded here -->
-            </div>
-
-            <div class="recent-tools">
-                <h3>Recently Added Tools</h3>
-                <div id="recentTools">
-                    <!-- Recent tools will be loaded here -->
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Discover Amazing Online Tools</h1>
+                <p>Community-curated directory of the best tools for every need</p>
+                
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search for tools..." id="searchInput">
+                    <button class="search-btn" onclick="searchTools()">
+                        <i class="fas fa-search"></i> Search
+                    </button>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <section class="stats">
+            <div class="container">
+                <div class="stats-grid" id="statsGrid">
+                    <div class="stat-item">
+                        <h3 id="totalTools">0</h3>
+                        <p>Total Tools</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3 id="totalCategories">6</h3>
+                        <p>Categories</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3 id="recentSubmissions">0</h3>
+                        <p>Recent Submissions</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="categories" id="categories">
+            <div class="container">
+                <h2>Browse by Category</h2>
+                <div class="category-grid" id="categoryGrid">
+                    <a href="/sections/business.html" class="category-card">
+                        <div class="category-icon">💼</div>
+                        <div class="tool-count" id="businessCount">0</div>
+                        <h3>Business</h3>
+                        <p>Tools for productivity, project management, and business operations</p>
+                    </a>
+
+                    <a href="/sections/design.html" class="category-card">
+                        <div class="category-icon">🎨</div>
+                        <div class="tool-count" id="designCount">0</div>
+                        <h3>Design</h3>
+                        <p>Creative tools for graphics, UI/UX, and visual content</p>
+                    </a>
+
+                    <a href="/sections/development.html" class="category-card">
+                        <div class="category-icon">💻</div>
+                        <div class="tool-count" id="developmentCount">0</div>
+                        <h3>Development</h3>
+                        <p>Coding tools, frameworks, and developer resources</p>
+                    </a>
+
+                    <a href="/sections/marketing.html" class="category-card">
+                        <div class="category-icon">📈</div>
+                        <div class="tool-count" id="marketingCount">0</div>
+                        <h3>Marketing</h3>
+                        <p>SEO, analytics, social media, and marketing automation</p>
+                    </a>
+
+                    <a href="/sections/finance.html" class="category-card">
+                        <div class="category-icon">💰</div>
+                        <div class="tool-count" id="financeCount">0</div>
+                        <h3>Finance</h3>
+                        <p>Financial planning, accounting, and investment tools</p>
+                    </a>
+
+                    <a href="/sections/education.html" class="category-card">
+                        <div class="category-icon">📚</div>
+                        <div class="tool-count" id="educationCount">0</div>
+                        <h3>Education</h3>
+                        <p>Learning resources, courses, and educational platforms</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 ToolHub. Built by the community, for the community.</p>
+            <p>&copy; 2025 ToolVaults. Community-curated with ❤️</p>
         </div>
     </footer>
 
-    <!-- Hidden form for Netlify Forms -->
-    <form name="tool-submission" netlify hidden>
-        <input type="text" name="tool-name" />
-        <input type="text" name="tool-url" />
-        <input type="text" name="category" />
-        <textarea name="description"></textarea>
-        <input type="text" name="tags" />
-    </form>
-
     <script>
-        // Sample data structure - in a real app, this would come from JSON files
-        const sections = [
-            {
-                id: 'business',
-                name: 'Business & Productivity',
-                description: 'Tools for project management, invoicing, scheduling, and business operations',
-                count: 45,
-                icon: '💼'
-            },
-            {
-                id: 'design',
-                name: 'Design & Creative',
-                description: 'Graphics, video editing, prototyping, and creative tools',
-                count: 32,
-                icon: '🎨'
-            },
-            {
-                id: 'development',
-                name: 'Development & Tech',
-                description: 'Code editors, APIs, testing tools, and developer resources',
-                count: 67,
-                icon: '💻'
-            },
-            {
-                id: 'marketing',
-                name: 'Marketing & SEO',
-                description: 'Analytics, social media, email campaigns, and growth tools',
-                count: 28,
-                icon: '📊'
-            },
-            {
-                id: 'finance',
-                name: 'Finance & Accounting',
-                description: 'Budgeting, tax tools, invoicing, and financial management',
-                count: 19,
-                icon: '💰'
-            },
-            {
-                id: 'education',
-                name: 'Education & Learning',
-                description: 'Online courses, tutorials, skill assessment, and learning platforms',
-                count: 41,
-                icon: '📚'
+        // Load stats and tool counts
+        async function loadStats() {
+            try {
+                // Load stats
+                const statsResponse = await fetch('/data/stats.json');
+                if (statsResponse.ok) {
+                    const stats = await statsResponse.json();
+                    document.getElementById('totalTools').textContent = stats.totalTools || 0;
+                    document.getElementById('recentSubmissions').textContent = stats.recentSubmissions || 0;
+                }
+
+                // Load individual category counts
+                const categories = ['business', 'design', 'development', 'marketing', 'finance', 'education'];
+                for (const category of categories) {
+                    try {
+                        const response = await fetch(`/data/${category}.json`);
+                        if (response.ok) {
+                            const data = await response.json();
+                            document.getElementById(`${category}Count`).textContent = data.tools?.length || 0;
+                        }
+                    } catch (e) {
+                        console.log(`Could not load ${category} data`);
+                    }
+                }
+            } catch (error) {
+                console.log('Could not load stats');
             }
-        ];
+        }
 
-        const recentTools = [
-            {
-                name: 'Figma',
-                description: 'Collaborative interface design tool',
-                url: 'https://figma.com',
-                category: 'design'
-            },
-            {
-                name: 'Notion',
-                description: 'All-in-one workspace for notes and collaboration',
-                url: 'https://notion.so',
-                category: 'business'
-            },
-            {
-                name: 'VS Code',
-                description: 'Free source-code editor by Microsoft',
-                url: 'https://code.visualstudio.com',
-                category: 'development'
+        // Search functionality
+        function searchTools() {
+            const query = document.getElementById('searchInput').value.trim();
+            if (query) {
+                // For now, redirect to business section - you can enhance this later
+                window.location.href = `/sections/business.html?search=${encodeURIComponent(query)}`;
             }
-        ];
-
-        function renderSections() {
-            const grid = document.getElementById('sectionGrid');
-            grid.innerHTML = sections.map(section => `
-                <div class="section-card" onclick="goToSection('${section.id}')">
-                    <h3>${section.icon} ${section.name}</h3>
-                    <p>${section.description}</p>
-                    <span class="tool-count">${section.count} tools</span>
-                </div>
-            `).join('');
         }
 
-        function renderRecentTools() {
-            const container = document.getElementById('recentTools');
-            container.innerHTML = recentTools.map(tool => `
-                <div class="tool-item">
-                    <div class="tool-info">
-                        <h4>${tool.name}</h4>
-                        <p>${tool.description}</p>
-                    </div>
-                    <a href="${tool.url}" target="_blank" class="tool-link">Visit</a>
-                </div>
-            `).join('');
-        }
-
-        function goToSection(sectionId) {
-            // In a real implementation, this would navigate to section pages
-            // For now, we'll create section pages in separate files
-            window.location.href = `sections/${sectionId}.html`;
-        }
-
-        function setupSearch() {
-            const searchInput = document.getElementById('searchInput');
-            searchInput.addEventListener('input', (e) => {
-                const query = e.target.value.toLowerCase();
-                // Implement search functionality here
-                console.log('Searching for:', query);
-            });
-        }
-
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', () => {
-            renderSections();
-            renderRecentTools();
-            setupSearch();
+        // Enter key search
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchTools();
+            }
         });
+
+        // Load data on page load
+        document.addEventListener('DOMContentLoaded', loadStats);
     </script>
 </body>
 </html>
