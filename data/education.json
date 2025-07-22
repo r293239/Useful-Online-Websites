@@ -1,1 +1,99 @@
-
+{
+  "category": "education",
+  "name": "Education Tools",
+  "description": "Tools for learning, teaching, course creation, and educational content",
+  "icon": "📚",
+  "tools": [
+    {
+      "id": "khan-academy",
+      "name": "Khan Academy",
+      "url": "https://khanacademy.org",
+      "description": "Free online learning platform with courses in math, science, programming, and more.",
+      "icon": "🎓",
+      "tags": ["online-learning", "free", "math", "science", "programming"],
+      "rating": 4.7,
+      "isPremium": false
+    },
+    {
+      "id": "coursera",
+      "name": "Coursera",
+      "url": "https://coursera.org",
+      "description": "Online learning platform partnering with universities to offer courses and degrees.",
+      "icon": "🏫",
+      "tags": ["online-courses", "university-partnerships", "certificates", "degrees"],
+      "rating": 4.5,
+      "isPremium": false
+    },
+    {
+      "id": "duolingo",
+      "name": "Duolingo",
+      "url": "https://duolingo.com",
+      "description": "Gamified language learning platform with bite-sized lessons and progress tracking.",
+      "icon": "🦜",
+      "tags": ["language-learning", "gamification", "mobile-app", "free"],
+      "rating": 4.6,
+      "isPremium": false
+    },
+    {
+      "id": "udemy",
+      "name": "Udemy",
+      "url": "https://udemy.com",
+      "description": "Online marketplace for learning and teaching with thousands of courses on various topics.",
+      "icon": "📖",
+      "tags": ["online-courses", "marketplace", "skill-development", "professional-training"],
+      "rating": 4.3,
+      "isPremium": false
+    },
+    {
+      "id": "anki",
+      "name": "Anki",
+      "url": "https://ankiweb.net",
+      "description": "Spaced repetition flashcard program for efficient memorization and long-term retention.",
+      "icon": "🧠",
+      "tags": ["flashcards", "spaced-repetition", "memorization", "study-tool"],
+      "rating": 4.5,
+      "isPremium": false
+    },
+    {
+      "id": "notion-education",
+      "name": "Google Classroom",
+      "url": "https://classroom.google.com",
+      "description": "Free web service for schools to create, distribute, and grade assignments paperlessly.",
+      "icon": "🏫",
+      "tags": ["classroom-management", "assignments", "google-workspace", "teachers"],
+      "rating": 4.4,
+      "isPremium": false
+    },
+    {
+      "id": "quizlet",
+      "name": "Quizlet",
+      "url": "https://quizlet.com",
+      "description": "Study tool with flashcards, games, and practice tests for various subjects and topics.",
+      "icon": "📇",
+      "tags": ["flashcards", "study-games", "practice-tests", "collaborative-learning"],
+      "rating": 4.3,
+      "isPremium": false
+    },
+    {
+      "id": "grammarly",
+      "name": "Grammarly",
+      "url": "https://grammarly.com",
+      "description": "AI-powered writing assistant for grammar checking, spell checking, and style suggestions.",
+      "icon": "✍️",
+      "tags": ["writing-assistance", "grammar", "proofreading", "ai-powered"],
+      "rating": 4.4,
+      "isPremium": false
+    },
+    {
+      "id": "ted-ed",
+      "name": "TED-Ed",
+      "url": "https://ed.ted.com",
+      "description": "Educational video platform with animated lessons and customizable learning experiences.",
+      "icon": "🎬",
+      "tags": ["educational-videos", "animated-lessons", "customizable", "teachers"],
+      "rating": 4.5,
+      "isPremium": false
+    }
+  ],
+  "lastUpdated": "2025-07-22"
+}
