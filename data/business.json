@@ -1,1 +1,98 @@
-
+{
+  "category": "business",
+  "name": "Business Tools",
+  "description": "Tools for productivity, project management, and business operations",
+  "icon": "💼",
+  "tools": [
+    {
+      "id": "slack",
+      "name": "Slack",
+      "url": "https://slack.com",
+      "description": "A messaging platform for teams that brings all your communication together in one place.",
+      "icon": "💬",
+      "tags": ["communication", "productivity", "team-collaboration"],
+      "rating": 4.5,
+      "isPremium": false
+    },
+    {
+      "id": "asana",
+      "name": "Asana",
+      "url": "https://asana.com",
+      "description": "Organize work and projects so teams know what to do, why it matters, and how to get it done.",
+      "icon": "📋",
+      "tags": ["project-management", "productivity", "team-collaboration"],
+      "rating": 4.3,
+      "isPremium": false
+    },
+    {
+      "id": "trello",
+      "name": "Trello",
+      "url": "https://trello.com",
+      "description": "A visual tool for organizing your work and life using boards, lists, and cards.",
+      "icon": "🗂️",
+      "tags": ["project-management", "productivity", "organization"],
+      "rating": 4.2,
+      "isPremium": false
+    },
+    {
+      "id": "notion",
+      "name": "Notion",
+      "url": "https://notion.so",
+      "description": "All-in-one workspace for notes, docs, knowledge base, and project management.",
+      "icon": "📝",
+      "tags": ["productivity", "documentation", "project-management"],
+      "rating": 4.6,
+      "isPremium": false
+    },
+    {
+      "id": "google-analytics",
+      "name": "Google Analytics",
+      "url": "https://analytics.google.com",
+      "description": "Web analytics service that tracks and reports website traffic and user behavior.",
+      "icon": "📊",
+      "tags": ["analytics", "marketing", "data-analysis"],
+      "rating": 4.1,
+      "isPremium": false
+    },
+    {
+      "id": "zapier",
+      "name": "Zapier",
+      "url": "https://zapier.com",
+      "description": "Automate workflows by connecting your favorite apps and services together.",
+      "icon": "⚡",
+      "tags": ["automation", "productivity", "integration"],
+      "rating": 4.4,
+      "isPremium": true
+    },
+    {
+      "id": "calendly",
+      "name": "Calendly",
+      "url": "https://calendly.com",
+      "description": "Scheduling software that eliminates the back-and-forth emails to find the perfect time.",
+      "icon": "📅",
+      "tags": ["productivity", "scheduling", "communication"],
+      "rating": 4.5,
+      "isPremium": false
+    },
+    {
+      "id": "hubspot",
+      "name": "HubSpot",
+      "url": "https://hubspot.com",
+      "description": "CRM platform with marketing, sales, service, and website management tools.",
+      "icon": "🎯",
+      "tags": ["crm", "marketing", "sales", "analytics"],
+      "rating": 4.3,
+      "isPremium": false
+    },
+    {
+      "id": "monday",
+      "name": "Monday.com",
+      "url": "https://monday.com",
+      "description": "Work operating system that powers teams to run projects and workflows with confidence.",
+      "icon": "🚀",
+      "tags": ["project-management", "productivity", "team-collaboration"],
+      "rating": 4.2,
+      "isPremium": false
+    }
+  ],
+  "lastUpdated": "2025-07-22"
