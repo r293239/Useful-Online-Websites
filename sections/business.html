@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Business Tools - ToolVaults</title>
+    <title id="pageTitle">Tools - ToolVaults</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         * {
@@ -159,11 +159,25 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
             border: 1px solid #eee;
+            position: relative;
         }
 
         .tool-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .premium-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #333;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
         .tool-header {
@@ -256,6 +270,39 @@
             color: #666;
         }
 
+        .category-stats {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1rem;
+            margin: 1rem 0;
+            text-align: center;
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
         footer {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
@@ -304,32 +351,49 @@
     <main>
         <section class="page-header">
             <div class="container">
-                <h1>
-                    <span>💼</span>
-                    Business Tools
+                <h1 id="categoryTitle">
+                    <span id="categoryIcon">🔧</span>
+                    <span id="categoryName">Tools</span>
                 </h1>
-                <p>Tools for productivity, project management, and business operations</p>
+                <p id="categoryDescription">Discover amazing tools for your needs</p>
+                
+                <div class="category-stats" id="categoryStats" style="display: none;">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-number" id="totalTools">0</span>
+                            <span class="stat-label">Tools</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="avgRating">0</span>
+                            <span class="stat-label">Avg Rating</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="freeTools">0</span>
+                            <span class="stat-label">Free Tools</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="lastUpdated">-</span>
+                            <span class="stat-label">Last Updated</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section class="container">
             <div class="search-filter-bar">
                 <div class="search-box">
-                    <input type="text" class="search-input" placeholder="Search business tools..." id="searchInput">
+                    <input type="text" class="search-input" placeholder="Search tools..." id="searchInput">
                 </div>
                 <div class="filter-tags" id="filterTags">
                     <button class="tag active" data-tag="all">All</button>
-                    <button class="tag" data-tag="productivity">Productivity</button>
-                    <button class="tag" data-tag="project-management">Project Management</button>
-                    <button class="tag" data-tag="communication">Communication</button>
-                    <button class="tag" data-tag="analytics">Analytics</button>
-                    <button class="tag" data-tag="automation">Automation</button>
+                    <!-- Dynamic tags will be populated here -->
                 </div>
             </div>
 
             <div class="tools-container">
                 <div class="loading" id="loading">
-                    <i class="fas fa-spinner fa-spin"></i> Loading business tools...
+                    <i class="fas fa-spinner fa-spin"></i> Loading tools...
                 </div>
                 <div class="tools-grid" id="toolsGrid" style="display: none;">
                     <!-- Tools will be loaded here -->
@@ -353,23 +417,93 @@
         let allTools = [];
         let filteredTools = [];
         let currentTag = 'all';
+        let categoryData = null;
 
-        // Load tools from JSON
-        async function loadTools() {
+        // Get category from URL or default to business
+        function getCurrentCategory() {
+            const path = window.location.pathname;
+            const match = path.match(/\/(\w+)\.html/);
+            return match ? match[1] : 'business';
+        }
+
+        // Load category data and tools
+        async function loadCategoryData() {
+            const category = getCurrentCategory();
+            
             try {
-                const response = await fetch('/data/business.json');
+                const response = await fetch(`/data/${category}.json`);
                 if (response.ok) {
-                    const data = await response.json();
-                    allTools = data.tools || [];
+                    categoryData = await response.json();
+                    allTools = categoryData.tools || [];
                     filteredTools = [...allTools];
+                    
+                    updatePageContent();
+                    generateFilterTags();
                     displayTools();
+                    updateStats();
                 } else {
                     showNoResults();
                 }
             } catch (error) {
-                console.error('Error loading tools:', error);
+                console.error('Error loading category data:', error);
                 showNoResults();
             }
+        }
+
+        // Update page content based on category data
+        function updatePageContent() {
+            if (!categoryData) return;
+
+            document.getElementById('pageTitle').textContent = `${categoryData.name} - ToolVaults`;
+            document.getElementById('categoryIcon').textContent = categoryData.icon || '🔧';
+            document.getElementById('categoryName').textContent = categoryData.name || 'Tools';
+            document.getElementById('categoryDescription').textContent = categoryData.description || 'Discover amazing tools for your needs';
+            document.getElementById('searchInput').placeholder = `Search ${categoryData.name.toLowerCase()}...`;
+        }
+
+        // Generate filter tags from tools data
+        function generateFilterTags() {
+            if (!allTools.length) return;
+
+            const tags = new Set();
+            allTools.forEach(tool => {
+                if (tool.tags) {
+                    tool.tags.forEach(tag => tags.add(tag));
+                }
+            });
+
+            const filterTags = document.getElementById('filterTags');
+            const allButton = filterTags.querySelector('[data-tag="all"]');
+            
+            // Clear existing tags except "All"
+            filterTags.innerHTML = '';
+            filterTags.appendChild(allButton);
+
+            // Add new tags
+            Array.from(tags).sort().forEach(tag => {
+                const button = document.createElement('button');
+                button.className = 'tag';
+                button.dataset.tag = tag;
+                button.textContent = tag.charAt(0).toUpperCase() + tag.slice(1).replace('-', ' ');
+                filterTags.appendChild(button);
+            });
+        }
+
+        // Update category statistics
+        function updateStats() {
+            if (!categoryData || !allTools.length) return;
+
+            const freeTools = allTools.filter(tool => !tool.isPremium).length;
+            const ratedTools = allTools.filter(tool => tool.rating);
+            const avgRating = ratedTools.length > 0 ? 
+                (ratedTools.reduce((sum, tool) => sum + tool.rating, 0) / ratedTools.length).toFixed(1) : 
+                'N/A';
+
+            document.getElementById('totalTools').textContent = allTools.length;
+            document.getElementById('avgRating').textContent = avgRating;
+            document.getElementById('freeTools').textContent = freeTools;
+            document.getElementById('lastUpdated').textContent = categoryData.lastUpdated || '-';
+            document.getElementById('categoryStats').style.display = 'block';
         }
 
         // Display tools in grid
@@ -402,7 +536,7 @@
             card.className = 'tool-card';
 
             const tagsHtml = tool.tags ? tool.tags.map(tag => 
-                `<span class="tool-tag">${tag}</span>`
+                `<span class="tool-tag">${tag.replace('-', ' ')}</span>`
             ).join('') : '';
 
             const rating = tool.rating ? 
@@ -411,14 +545,18 @@
                     <span>${tool.rating}/5</span>
                 </div>` : '';
 
+            const premiumBadge = tool.isPremium ? 
+                '<div class="premium-badge">Premium</div>' : '';
+
             card.innerHTML = `
+                ${premiumBadge}
                 <div class="tool-header">
                     <div class="tool-icon">
                         ${tool.icon || '🔧'}
                     </div>
                     <div class="tool-info">
                         <h3>${tool.name}</h3>
-                        <div class="url">${tool.url}</div>
+                        <div class="url">${new URL(tool.url).hostname}</div>
                     </div>
                 </div>
                 <div class="tool-description">
@@ -484,15 +622,15 @@
 
         // Event listeners
         document.addEventListener('DOMContentLoaded', () => {
-            // Load tools
-            loadTools();
+            // Load category data
+            loadCategoryData();
 
             // Check for search query in URL
             const urlParams = new URLSearchParams(window.location.search);
             const searchQuery = urlParams.get('search');
             if (searchQuery) {
                 document.getElementById('searchInput').value = searchQuery;
-                searchTools(searchQuery);
+                setTimeout(() => searchTools(searchQuery), 500); // Wait for data to load
             }
 
             // Search input
