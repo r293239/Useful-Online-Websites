@@ -1,1 +1,99 @@
-
+{
+  "category": "development",
+  "name": "Development Tools",
+  "description": "Tools for coding, software development, testing, and deployment",
+  "icon": "💻",
+  "tools": [
+    {
+      "id": "github",
+      "name": "GitHub",
+      "url": "https://github.com",
+      "description": "Web-based platform for version control and collaborative software development using Git.",
+      "icon": "🐙",
+      "tags": ["version-control", "collaboration", "open-source", "code-hosting"],
+      "rating": 4.8,
+      "isPremium": false
+    },
+    {
+      "id": "vscode",
+      "name": "Visual Studio Code",
+      "url": "https://code.visualstudio.com",
+      "description": "Free, open-source code editor with support for debugging, syntax highlighting, and extensions.",
+      "icon": "📝",
+      "tags": ["code-editor", "ide", "extensions", "debugging"],
+      "rating": 4.7,
+      "isPremium": false
+    },
+    {
+      "id": "postman",
+      "name": "Postman",
+      "url": "https://postman.com",
+      "description": "API development environment for designing, testing, and documenting APIs.",
+      "icon": "📮",
+      "tags": ["api-testing", "api-development", "documentation", "collaboration"],
+      "rating": 4.5,
+      "isPremium": false
+    },
+    {
+      "id": "docker",
+      "name": "Docker",
+      "url": "https://docker.com",
+      "description": "Platform for developing, shipping, and running applications using containerization.",
+      "icon": "🐳",
+      "tags": ["containerization", "deployment", "devops", "microservices"],
+      "rating": 4.4,
+      "isPremium": false
+    },
+    {
+      "id": "netlify",
+      "name": "Netlify",
+      "url": "https://netlify.com",
+      "description": "Platform for deploying and hosting modern web applications with continuous deployment.",
+      "icon": "🚀",
+      "tags": ["hosting", "deployment", "jamstack", "continuous-integration"],
+      "rating": 4.6,
+      "isPremium": false
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel",
+      "url": "https://vercel.com",
+      "description": "Frontend cloud platform for static sites and serverless functions with instant deployment.",
+      "icon": "▲",
+      "tags": ["hosting", "deployment", "serverless", "frontend"],
+      "rating": 4.5,
+      "isPremium": false
+    },
+    {
+      "id": "stackoverflow",
+      "name": "Stack Overflow",
+      "url": "https://stackoverflow.com",
+      "description": "Question and answer community for programmers and developers to share knowledge.",
+      "icon": "💬",
+      "tags": ["community", "q-and-a", "problem-solving", "learning"],
+      "rating": 4.3,
+      "isPremium": false
+    },
+    {
+      "id": "codepen",
+      "name": "CodePen",
+      "url": "https://codepen.io",
+      "description": "Online code editor and community for front-end developers to showcase HTML, CSS, and JS.",
+      "icon": "✏️",
+      "tags": ["code-playground", "frontend", "prototyping", "community"],
+      "rating": 4.4,
+      "isPremium": false
+    },
+    {
+      "id": "jira",
+      "name": "Jira",
+      "url": "https://atlassian.com/software/jira",
+      "description": "Issue tracking and project management tool for agile software development teams.",
+      "icon": "🎯",
+      "tags": ["project-management", "issue-tracking", "agile", "team-collaboration"],
+      "rating": 4.1,
+      "isPremium": false
+    }
+  ],
+  "lastUpdated": "2025-07-22"
+}
