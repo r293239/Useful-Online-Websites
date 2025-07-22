@@ -651,5 +651,13 @@
             });
         });
     </script>
+    <script>
+  // Automatically detect category from the file name
+  const filename = window.location.pathname.split('/').pop();
+  const category = filename.replace('.html', '').toLowerCase();
+  localStorage.setItem('preferredCategory', category);
+</script>
+<script src="../script.js"></script>
+
 </body>
 </html>
