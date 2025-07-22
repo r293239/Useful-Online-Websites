@@ -1,1 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Tool - ToolVaults Admin</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .page-header {
+            text-align: center;
+            padding: 3rem 0 2rem;
+            color: white;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .form-container {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            outline: none;
+        }
+
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .tag-input-container {
+            position: relative;
+        }
+
+        .tag-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            max-height: 150px;
+            overflow-y: auto;
+            z-index: 10;
+            display: none;
+        }
+
+        .tag-suggestion {
+            padding: 0.5rem;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+        }
+
+        .tag-suggestion:hover {
+            background: #f8f9fa;
+        }
+
+        .selected-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .tag-item {
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tag-remove {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .form-help {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.3rem;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            border: 1px solid #c3e6cb;
+            display: none;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            border: 1px solid #f5c6cb;
+            display: none;
+        }
+
+        .guidelines {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            color: white;
+        }
+
+        .guidelines h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .guidelines ul {
+            margin-left: 1.5rem;
+        }
+
+        .guidelines li {
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem 0;
+            text-align: center;
+            color: white;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">🔧 ToolVaults</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#categories">Browse</a></li>
+                <li><a href="/admin">Submit Tool</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Submit a Tool</h1>
+                <p>Help us grow our directory by suggesting amazing tools</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="guidelines">
+                <h3>📋 Submission Guidelines</h3>
+                <ul>
+                    <li>Only submit tools that are publicly accessible and functional</li>
+                    <li>Provide accurate and helpful descriptions</li>
+                    <li>Choose appropriate categories and tags</li>
+                    <li>No affiliate links - submit the main tool URL</li>
+                    <li>Tools should be useful to a general audience</li>
+                </ul>
+            </div>
+
+            <div class="form-container">
+                <div class="success-message" id="successMessage">
+                    <i class="fas fa-check-circle"></i>
+                    Tool submitted successfully! We'll review it and add it to the directory soon.
+                </div>
+
+                <div class="error-message" id="errorMessage">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span id="errorText">Please fill in all required fields.</span>
+                </div>
+
+                <form id="toolSubmissionForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="toolName">Tool Name <span class="required">*</span></label>
+                            <input type="text" id="toolName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="toolUrl">Tool URL <span class="required">*</span></label>
+                            <input type="url" id="toolUrl" class="form-control" placeholder="https://" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="toolDescription">Description <span class="required">*</span></label>
+                        <textarea id="toolDescription" class="form-control" placeholder="Describe what this tool does and why it's useful..." required></textarea>
+                        <div class="form-help">Keep it concise but informative (50-200 characters recommended)</div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="toolCategory">Category <span class="required">*</span></label>
+                            <select id="toolCategory" class="form-control" required>
+                                <option value="">Select a category</option>
+                                <option value="business">💼 Business</option>
+                                <option value="design">🎨 Design</option>
+                                <option value="development">💻 Development</option>
+                                <option value="marketing">📈 Marketing</option>
+                                <option value="finance">💰 Finance</option>
+                                <option value="education">📚 Education</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="toolIcon">Icon (Emoji)</label>
+                            <input type="text" id="toolIcon" class="form-control" placeholder="🔧" maxlength="2">
+                            <div class="form-help">Single emoji to represent the tool</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tagInput">Tags</label>
+                        <div class="tag-input-container">
+                            <input type="text" id="tagInput" class="form-control" placeholder="Type tags and press Enter...">
+                            <div class="tag-suggestions" id="tagSuggestions"></div>
+                        </div>
+                        <div class="selected-tags" id="selectedTags"></div>
+                        <div class="form-help">Add relevant tags to help users find this tool (e.g., productivity, design, automation)</div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="submitterName">Your Name</label>
+                            <input type="text" id="submitterName" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="submitterEmail">Your Email</label>
+                            <input type="email" id="submitterEmail" class="form-control">
+                            <div class="form-help">Optional - for follow-up questions</div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i>
+                        Submit Tool for Review
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 ToolVaults. Community-curated with ❤️</p>
+        </div>
+    </footer>
+
+    <script>
+        const tagSuggestions = [
+            'productivity', 'design', 'development', 'marketing', 'analytics', 
+            'automation', 'communication', 'project-management', 'team-collaboration',
+            'crm', 'social-media', 'seo', 'email', 'scheduling', 'finance',
+            'accounting', 'invoicing', 'learning', 'courses', 'documentation',
+            'code-editor', 'framework', 'library', 'api', 'database',
+            'graphics', 'ui-ux', 'prototyping', 'icons', 'fonts',
+            'free', 'premium', 'open-source', 'saas', 'mobile'
+        ];
+
+        let selectedTags = [];
+
+        // Tag input functionality
+        const tagInput = document.getElementById('tagInput');
+        const tagSuggestionsEl = document.getElementById('tagSuggestions');
+        const selectedTagsEl = document.getElementById('selectedTags');
+
+        tagInput.addEventListener('input', function() {
+            const value = this.value.toLowerCase();
+            if (value.length > 0) {
+                const matches = tagSuggestions.filter(tag => 
+                    tag.toLowerCase().includes(value) && !selectedTags.includes(tag)
+                );
+                showSuggestions(matches);
+            } else {
+                hideSuggestions();
+            }
+        });
+
+        tagInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const value = this.value.trim().toLowerCase();
+                if (value && !selectedTags.includes(value)) {
+                    addTag(value);
+                    this.value = '';
+                    hideSuggestions();
+                }
+            }
+        });
+
+        function showSuggestions(matches) {
+            if (matches.length > 0) {
+                tagSuggestionsEl.innerHTML = matches.map(tag =>
+                    `<div class="tag-suggestion" onclick="selectSuggestion('${tag}')">${tag}</div>`
+                ).join('');
+                tagSuggestionsEl.style.display = 'block';
+            } else {
+                hideSuggestions();
+            }
+        }
+
+        function hideSuggestions() {
+            tagSuggestionsEl.style.display = 'none';
+        }
+
+        function selectSuggestion(tag) {
+            addTag(tag);
+            tagInput.value = '';
+            hideSuggestions();
+        }
+
+        function addTag(tag) {
+            if (!selectedTags.includes(tag)) {
+                selectedTags.push(tag);
+                updateTagsDisplay();
+            }
+        }
+
+        function removeTag(tag) {
+            selectedTags = selectedTags.filter(t => t !== tag);
+            updateTagsDisplay();
+        }
+
+        function updateTagsDisplay() {
+            selectedTagsEl.innerHTML = selectedTags.map(tag =>
+                `<div class="tag-item">
+                    ${tag}
+                    <button type="button" class="tag-remove" onclick="removeTag('${tag}')">&times;</button>
+                </div>`
+            ).join('');
+        }
+
+        // Form submission
+        document.getElementById('toolSubmissionForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Hide previous messages
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            
+            // Disable submit button
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            
+            try {
+                // Collect form data
+                const formData = {
+                    name: document.getElementById('toolName').value.trim(),
+                    url: document.getElementById('toolUrl').value.trim(),
+                    description: document.getElementById('toolDescription').value.trim(),
+                    category: document.getElementById('toolCategory').value,
+                    icon: document.getElementById('toolIcon').value.trim() || '🔧',
+                    tags: selectedTags,
+                    submitter: {
+                        name: document.getElementById('submitterName').value.trim(),
+                        email: document.getElementById('submitterEmail').value.trim()
+                    },
+                    submittedAt: new Date().toISOString()
+                };
+                
+                // Basic validation
+                if (!formData.name || !formData.url || !formData.description || !formData.category) {
+                    throw new Error('Please fill in all required fields.');
+                }
+                
+                // Simulate submission (in real implementation, this would POST to your backend)
+                await simulateSubmission(formData);
+                
+                // Show success message
+                successMessage.style.display = 'block';
+                
+                // Reset form
+                this.reset();
+                selectedTags = [];
+                updateTagsDisplay();
+                
+                // Scroll to success message
+                successMessage.scrollIntoView({ behavior: 'smooth' });
+                
+            } catch (error) {
+                // Show error message
+                document.getElementById('errorText').textContent = error.message;
+                errorMessage.style.display = 'block';
+                errorMessage.scrollIntoView({ behavior: 'smooth' });
+            } finally {
+                // Re-enable submit button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Tool for Review';
+            }
+        });
+        
+        async function simulateSubmission(data) {
+            // Simulate API delay
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            // In a real implementation, you would:
+            // 1. Send data to your backend API
+            // 2. Store in database or JSON file
+            // 3. Send notification emails
+            // 4. Add to pending reviews queue
+            
+            console.log('Tool submission:', data);
+            
+            // For demo purposes, we'll just log it
+            // You could also append to submissions.json via API
+        }
+        
+        // Hide suggestions when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!tagInput.contains(e.target) && !tagSuggestionsEl.contains(e.target)) {
+                hideSuggestions();
+            }
+        });
+    </script>
+</body>
+</html>
