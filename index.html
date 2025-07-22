@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolHub - Discover Amazing Online Tools</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8fafc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #64748b;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #10b981;
+            color: white;
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #059669;
+        }
+
+        .sections {
+            padding: 4rem 0;
+        }
+
+        .sections h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: #1e293b;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .section-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2563eb;
+        }
+
+        .section-card p {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+        }
+
+        .tool-count {
+            background: #e0f2fe;
+            color: #0277bd;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .search-bar {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-input:focus {
+            border-color: #2563eb;
+        }
+
+        .recent-tools {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .recent-tools h3 {
+            margin-bottom: 1.5rem;
+            color: #1e293b;
+        }
+
+        .tool-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .tool-item:last-child {
+            border-bottom: none;
+        }
+
+        .tool-info h4 {
+            color: #2563eb;
+            margin-bottom: 0.5rem;
+        }
+
+        .tool-info p {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .tool-link {
+            background: #f1f5f9;
+            color: #2563eb;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .tool-link:hover {
+            background: #e2e8f0;
+        }
+
+        footer {
+            background: #1e293b;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">ToolHub</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#sections">Browse</a></li>
+                    <li><a href="#submit">Submit Tool</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Discover Amazing Online Tools</h1>
+            <p>Community-curated directory of the best tools for every need</p>
+            <a href="#sections" class="cta-button">Explore Tools</a>
+        </div>
+    </section>
+
+    <section class="sections" id="sections">
+        <div class="container">
+            <div class="search-bar">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search for tools...">
+            </div>
+
+            <h2>Browse by Category</h2>
+            <div class="section-grid" id="sectionGrid">
+                <!-- Sections will be loaded here -->
+            </div>
+
+            <div class="recent-tools">
+                <h3>Recently Added Tools</h3>
+                <div id="recentTools">
+                    <!-- Recent tools will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 ToolHub. Built by the community, for the community.</p>
+        </div>
+    </footer>
+
+    <!-- Hidden form for Netlify Forms -->
+    <form name="tool-submission" netlify hidden>
+        <input type="text" name="tool-name" />
+        <input type="text" name="tool-url" />
+        <input type="text" name="category" />
+        <textarea name="description"></textarea>
+        <input type="text" name="tags" />
+    </form>
+
+    <script>
+        // Sample data structure - in a real app, this would come from JSON files
+        const sections = [
+            {
+                id: 'business',
+                name: 'Business & Productivity',
+                description: 'Tools for project management, invoicing, scheduling, and business operations',
+                count: 45,
+                icon: '💼'
+            },
+            {
+                id: 'design',
+                name: 'Design & Creative',
+                description: 'Graphics, video editing, prototyping, and creative tools',
+                count: 32,
+                icon: '🎨'
+            },
+            {
+                id: 'development',
+                name: 'Development & Tech',
+                description: 'Code editors, APIs, testing tools, and developer resources',
+                count: 67,
+                icon: '💻'
+            },
+            {
+                id: 'marketing',
+                name: 'Marketing & SEO',
+                description: 'Analytics, social media, email campaigns, and growth tools',
+                count: 28,
+                icon: '📊'
+            },
+            {
+                id: 'finance',
+                name: 'Finance & Accounting',
+                description: 'Budgeting, tax tools, invoicing, and financial management',
+                count: 19,
+                icon: '💰'
+            },
+            {
+                id: 'education',
+                name: 'Education & Learning',
+                description: 'Online courses, tutorials, skill assessment, and learning platforms',
+                count: 41,
+                icon: '📚'
+            }
+        ];
+
+        const recentTools = [
+            {
+                name: 'Figma',
+                description: 'Collaborative interface design tool',
+                url: 'https://figma.com',
+                category: 'design'
+            },
+            {
+                name: 'Notion',
+                description: 'All-in-one workspace for notes and collaboration',
+                url: 'https://notion.so',
+                category: 'business'
+            },
+            {
+                name: 'VS Code',
+                description: 'Free source-code editor by Microsoft',
+                url: 'https://code.visualstudio.com',
+                category: 'development'
+            }
+        ];
+
+        function renderSections() {
+            const grid = document.getElementById('sectionGrid');
+            grid.innerHTML = sections.map(section => `
+                <div class="section-card" onclick="goToSection('${section.id}')">
+                    <h3>${section.icon} ${section.name}</h3>
+                    <p>${section.description}</p>
+                    <span class="tool-count">${section.count} tools</span>
+                </div>
+            `).join('');
+        }
+
+        function renderRecentTools() {
+            const container = document.getElementById('recentTools');
+            container.innerHTML = recentTools.map(tool => `
+                <div class="tool-item">
+                    <div class="tool-info">
+                        <h4>${tool.name}</h4>
+                        <p>${tool.description}</p>
+                    </div>
+                    <a href="${tool.url}" target="_blank" class="tool-link">Visit</a>
+                </div>
+            `).join('');
+        }
+
+        function goToSection(sectionId) {
+            // In a real implementation, this would navigate to section pages
+            // For now, we'll create section pages in separate files
+            window.location.href = `sections/${sectionId}.html`;
+        }
+
+        function setupSearch() {
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase();
+                // Implement search functionality here
+                console.log('Searching for:', query);
+            });
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            renderSections();
+            renderRecentTools();
+            setupSearch();
+        });
+    </script>
+</body>
+</html>
