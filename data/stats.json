@@ -1,1 +1,27 @@
-
+{
+  "totalTools": 48,
+  "totalCategories": 6,
+  "recentSubmissions": 12,
+  "lastUpdated": "2025-07-22",
+  "categoryBreakdown": {
+    "business": 8,
+    "design": 9,
+    "development": 12,
+    "marketing": 7,
+    "finance": 6,
+    "education": 6
+  },
+  "monthlyStats": {
+    "toolsAdded": 12,
+    "submissions": 18,
+    "visits": 2450
+  },
+  "popularTags": [
+    {"tag": "productivity", "count": 15},
+    {"tag": "design", "count": 12},
+    {"tag": "development", "count": 10},
+    {"tag": "analytics", "count": 8},
+    {"tag": "automation", "count": 7},
+    {"tag": "marketing", "count": 6}
+  ]
+}
