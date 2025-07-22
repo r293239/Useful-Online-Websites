@@ -1,0 +1,109 @@
+{
+  "category": "finance",
+  "name": "Finance Tools",
+  "description": "Tools for budgeting, investing, accounting, and financial management",
+  "icon": "💰",
+  "tools": [
+    {
+      "id": "mint",
+      "name": "Mint",
+      "url": "https://mint.intuit.com",
+      "description": "Personal finance management tool for budgeting, expense tracking, and credit monitoring.",
+      "icon": "🌿",
+      "tags": ["budgeting", "expense-tracking", "credit-monitoring", "personal-finance"],
+      "rating": 4.3,
+      "isPremium": false
+    },
+    {
+      "id": "quickbooks",
+      "name": "QuickBooks",
+      "url": "https://quickbooks.intuit.com",
+      "description": "Accounting software for small businesses to manage finances, invoicing, and payroll.",
+      "icon": "📊",
+      "tags": ["accounting", "small-business", "invoicing", "payroll"],
+      "rating": 4.4,
+      "isPremium": true
+    },
+    {
+      "id": "robinhood",
+      "name": "Robinhood",
+      "url": "https://robinhood.com",
+      "description": "Commission-free investing platform for stocks, ETFs, options, and cryptocurrency.",
+      "icon": "🏹",
+      "tags": ["investing", "stocks", "commission-free", "cryptocurrency"],
+      "rating": 4.1,
+      "isPremium": false
+    },
+    {
+      "id": "ynab",
+      "name": "YNAB (You Need A Budget)",
+      "url": "https://youneedabudget.com",
+      "description": "Zero-based budgeting software that helps you assign every dollar and break the paycheck-to-paycheck cycle.",
+      "icon": "📈",
+      "tags": ["budgeting", "zero-based-budgeting", "financial-planning", "debt-management"],
+      "rating": 4.8,
+      "isPremium": true
+    },
+    {
+      "id": "paypal",
+      "name": "PayPal",
+      "url": "https://paypal.com",
+      "description": "Digital payment platform for online transactions, money transfers, and business payments.",
+      "icon": "💳",
+      "tags": ["digital-payments", "money-transfer", "online-transactions", "business-payments"],
+      "rating": 4.2,
+      "isPremium": false
+    },
+    {
+      "id": "stripe",
+      "name": "Stripe",
+      "url": "https://stripe.com",
+      "description": "Payment processing platform for online businesses with developer-friendly APIs.",
+      "icon": "💡",
+      "tags": ["payment-processing", "developer-apis", "online-business", "e-commerce"],
+      "rating": 4.6,
+      "isPremium": false
+    },
+    {
+      "id": "personal-capital",
+      "name": "Personal Capital",
+      "url": "https://personalcapital.com",
+      "description": "Wealth management and financial planning tool with investment tracking and advisory services.",
+      "icon": "🏛️",
+      "tags": ["wealth-management", "investment-tracking", "financial-planning", "advisory"],
+      "rating": 4.4,
+      "isPremium": false
+    },
+    {
+      "id": "xero",
+      "name": "Xero",
+      "url": "https://xero.com",
+      "description": "Cloud-based accounting software for small businesses with invoicing, expenses, and reporting.",
+      "icon": "☁️",
+      "tags": ["cloud-accounting", "small-business", "invoicing", "financial-reporting"],
+      "rating": 4.5,
+      "isPremium": true
+    },
+    {
+      "id": "coinbase",
+      "name": "Coinbase",
+      "url": "https://coinbase.com",
+      "description": "Cryptocurrency exchange platform for buying, selling, and storing digital currencies.",
+      "icon": "₿",
+      "tags": ["cryptocurrency", "digital-currency", "trading", "blockchain"],
+      "rating": 4.0,
+      "isPremium": false
+    },
+    {
+      "id": "expensify",
+      "name": "Expensify",
+      "url": "https://expensify.com",
+      "description": "Expense management software that automates expense reporting and reimbursement processes.",
+      "icon": "🧾",
+      "tags": ["expense-management", "expense-reporting", "reimbursement", "business-travel"],
+      "rating": 4.3,
+      "isPremium": false
+    }
+  ],
+  "lastUpdated": "2025-07-22"
+}
