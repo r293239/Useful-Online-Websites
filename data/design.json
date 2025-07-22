@@ -1,1 +1,99 @@
-
+{
+  "category": "design",
+  "name": "Design Tools",
+  "description": "Tools for graphic design, UI/UX, prototyping, and creative work",
+  "icon": "🎨",
+  "tools": [
+    {
+      "id": "figma",
+      "name": "Figma",
+      "url": "https://figma.com",
+      "description": "Collaborative interface design tool for creating user interfaces, prototypes, and design systems.",
+      "icon": "🎨",
+      "tags": ["ui-design", "prototyping", "collaboration", "design-systems"],
+      "rating": 4.7,
+      "isPremium": false
+    },
+    {
+      "id": "canva",
+      "name": "Canva",
+      "url": "https://canva.com",
+      "description": "Easy-to-use design tool for creating graphics, presentations, social media posts, and more.",
+      "icon": "🖌️",
+      "tags": ["graphic-design", "templates", "social-media", "presentations"],
+      "rating": 4.5,
+      "isPremium": false
+    },
+    {
+      "id": "adobe-creative-cloud",
+      "name": "Adobe Creative Cloud",
+      "url": "https://adobe.com/creativecloud",
+      "description": "Suite of creative applications including Photoshop, Illustrator, After Effects, and more.",
+      "icon": "🎭",
+      "tags": ["professional-design", "photo-editing", "illustration", "video-editing"],
+      "rating": 4.4,
+      "isPremium": true
+    },
+    {
+      "id": "sketch",
+      "name": "Sketch",
+      "url": "https://sketch.com",
+      "description": "Vector graphics editor focused on user interface and user experience design.",
+      "icon": "✏️",
+      "tags": ["ui-design", "vector-graphics", "mac-only", "design-systems"],
+      "rating": 4.3,
+      "isPremium": true
+    },
+    {
+      "id": "framer",
+      "name": "Framer",
+      "url": "https://framer.com",
+      "description": "Interactive design tool for creating high-fidelity prototypes and animations.",
+      "icon": "⚡",
+      "tags": ["prototyping", "animation", "interaction-design", "web-design"],
+      "rating": 4.4,
+      "isPremium": false
+    },
+    {
+      "id": "unsplash",
+      "name": "Unsplash",
+      "url": "https://unsplash.com",
+      "description": "Free high-resolution photos and images for your creative projects.",
+      "icon": "📷",
+      "tags": ["stock-photos", "free-resources", "photography", "images"],
+      "rating": 4.6,
+      "isPremium": false
+    },
+    {
+      "id": "dribbble",
+      "name": "Dribbble",
+      "url": "https://dribbble.com",
+      "description": "Community of designers sharing screenshots of their work, process, and projects.",
+      "icon": "🏀",
+      "tags": ["inspiration", "portfolio", "community", "design-showcase"],
+      "rating": 4.2,
+      "isPremium": false
+    },
+    {
+      "id": "invision",
+      "name": "InVision",
+      "url": "https://invisionapp.com",
+      "description": "Digital product design platform for prototyping, collaboration, and design workflow.",
+      "icon": "💡",
+      "tags": ["prototyping", "collaboration", "design-workflow", "feedback"],
+      "rating": 4.1,
+      "isPremium": false
+    },
+    {
+      "id": "coolors",
+      "name": "Coolors",
+      "url": "https://coolors.co",
+      "description": "Color palette generator and color scheme explorer for designers and artists.",
+      "icon": "🌈",
+      "tags": ["color-palettes", "color-theory", "design-tools", "inspiration"],
+      "rating": 4.5,
+      "isPremium": false
+    }
+  ],
+  "lastUpdated": "2025-07-22"
+}
