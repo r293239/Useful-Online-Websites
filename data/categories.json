@@ -1,1 +1,61 @@
-
+{
+  "categories": [
+    {
+      "id": "business",
+      "name": "Business Tools",
+      "description": "Tools for productivity, project management, and business operations",
+      "icon": "💼",
+      "color": "#3B82F6",
+      "toolCount": 9,
+      "featured": true
+    },
+    {
+      "id": "design",
+      "name": "Design Tools",
+      "description": "Tools for graphic design, UI/UX, prototyping, and creative work",
+      "icon": "🎨",
+      "color": "#EF4444",
+      "toolCount": 9,
+      "featured": true
+    },
+    {
+      "id": "development",
+      "name": "Development Tools",
+      "description": "Tools for coding, software development, testing, and deployment",
+      "icon": "💻",
+      "color": "#10B981",
+      "toolCount": 9,
+      "featured": true
+    },
+    {
+      "id": "marketing",
+      "name": "Marketing Tools",
+      "description": "Tools for digital marketing, social media, email campaigns, and analytics",
+      "icon": "📈",
+      "color": "#F59E0B",
+      "toolCount": 9,
+      "featured": true
+    },
+    {
+      "id": "finance",
+      "name": "Finance Tools",
+      "description": "Tools for accounting, budgeting, investment tracking, and financial management",
+      "icon": "💰",
+      "color": "#8B5CF6",
+      "toolCount": 9,
+      "featured": false
+    },
+    {
+      "id": "education",
+      "name": "Education Tools",
+      "description": "Tools for learning, teaching, course creation, and educational content",
+      "icon": "📚",
+      "color": "#06B6D4",
+      "toolCount": 9,
+      "featured": false
+    }
+  ],
+  "totalCategories": 6,
+  "totalTools": 54,
+  "lastUpdated": "2025-07-22"
+}
