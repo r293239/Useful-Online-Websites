@@ -1,98 +1,728 @@
-{
-  "category": "business",
-  "name": "Business Tools",
-  "description": "Tools for productivity, project management, and business operations",
-  "icon": "💼",
-  "tools": [
-    {
-      "id": "slack",
-      "name": "Slack",
-      "url": "https://slack.com",
-      "description": "A messaging platform for teams that brings all your communication together in one place.",
-      "icon": "💬",
-      "tags": ["communication", "productivity", "team-collaboration"],
-      "rating": 4.5,
-      "isPremium": false
-    },
-    {
-      "id": "asana",
-      "name": "Asana",
-      "url": "https://asana.com",
-      "description": "Organize work and projects so teams know what to do, why it matters, and how to get it done.",
-      "icon": "📋",
-      "tags": ["project-management", "productivity", "team-collaboration"],
-      "rating": 4.3,
-      "isPremium": false
-    },
-    {
-      "id": "trello",
-      "name": "Trello",
-      "url": "https://trello.com",
-      "description": "A visual tool for organizing your work and life using boards, lists, and cards.",
-      "icon": "🗂️",
-      "tags": ["project-management", "productivity", "organization"],
-      "rating": 4.2,
-      "isPremium": false
-    },
-    {
-      "id": "notion",
-      "name": "Notion",
-      "url": "https://notion.so",
-      "description": "All-in-one workspace for notes, docs, knowledge base, and project management.",
-      "icon": "📝",
-      "tags": ["productivity", "documentation", "project-management"],
-      "rating": 4.6,
-      "isPremium": false
-    },
-    {
-      "id": "google-analytics",
-      "name": "Google Analytics",
-      "url": "https://analytics.google.com",
-      "description": "Web analytics service that tracks and reports website traffic and user behavior.",
-      "icon": "📊",
-      "tags": ["analytics", "marketing", "data-analysis"],
-      "rating": 4.1,
-      "isPremium": false
-    },
-    {
-      "id": "zapier",
-      "name": "Zapier",
-      "url": "https://zapier.com",
-      "description": "Automate workflows by connecting your favorite apps and services together.",
-      "icon": "⚡",
-      "tags": ["automation", "productivity", "integration"],
-      "rating": 4.4,
-      "isPremium": true
-    },
-    {
-      "id": "calendly",
-      "name": "Calendly",
-      "url": "https://calendly.com",
-      "description": "Scheduling software that eliminates the back-and-forth emails to find the perfect time.",
-      "icon": "📅",
-      "tags": ["productivity", "scheduling", "communication"],
-      "rating": 4.5,
-      "isPremium": false
-    },
-    {
-      "id": "hubspot",
-      "name": "HubSpot",
-      "url": "https://hubspot.com",
-      "description": "CRM platform with marketing, sales, service, and website management tools.",
-      "icon": "🎯",
-      "tags": ["crm", "marketing", "sales", "analytics"],
-      "rating": 4.3,
-      "isPremium": false
-    },
-    {
-      "id": "monday",
-      "name": "Monday.com",
-      "url": "https://monday.com",
-      "description": "Work operating system that powers teams to run projects and workflows with confidence.",
-      "icon": "🚀",
-      "tags": ["project-management", "productivity", "team-collaboration"],
-      "rating": 4.2,
-      "isPremium": false
-    }
-  ],
-  "lastUpdated": "2025-07-22"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Design Tools - ToolVaults</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .page-header {
+            text-align: center;
+            padding: 3rem 0;
+            color: white;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .search-filter-bar {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            outline: none;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .filter-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .tag:hover, .tag.active {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .tools-container {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .tool-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #eee;
+            position: relative;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .premium-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #333;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .tool-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .tool-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .tool-info h3 {
+            margin: 0;
+            font-size: 1.3rem;
+            color: #333;
+        }
+
+        .tool-info .url {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .tool-description {
+            color: #555;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .tool-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .tool-tag {
+            background: #f0f0f0;
+            color: #666;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        .tool-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .visit-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .visit-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #ffa500;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+        }
+
+        .category-stats {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1rem;
+            margin: 1rem 0;
+            text-align: center;
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        footer {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem 0;
+            text-align: center;
+            color: white;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .search-filter-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .search-box {
+                min-width: auto;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="../index.html" class="logo">🔧 ToolVaults</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#categories">Browse</a></li>
+                <li><a href="../admin">Submit Tool</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1 id="categoryTitle">
+                    <span id="categoryIcon">🎨</span>
+                    <span id="categoryName">Design Tools</span>
+                </h1>
+                <p id="categoryDescription">Creative tools for graphics, UI/UX, and visual content</p>
+                
+                <div class="category-stats" id="categoryStats" style="display: none;">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-number" id="totalTools">0</span>
+                            <span class="stat-label">Tools</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="avgRating">0</span>
+                            <span class="stat-label">Avg Rating</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="freeTools">0</span>
+                            <span class="stat-label">Free Tools</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="lastUpdated">-</span>
+                            <span class="stat-label">Last Updated</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="search-filter-bar">
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search design tools..." id="searchInput">
+                </div>
+                <div class="filter-tags" id="filterTags">
+                    <button class="tag active" data-tag="all">All</button>
+                    <!-- Dynamic tags will be populated here -->
+                </div>
+            </div>
+
+            <div class="tools-container">
+                <div class="loading" id="loading">
+                    <i class="fas fa-spinner fa-spin"></i> Loading tools...
+                </div>
+                <div class="tools-grid" id="toolsGrid" style="display: none;">
+                    <!-- Tools will be loaded here -->
+                </div>
+                <div class="no-results" id="noResults" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <h3>No tools found</h3>
+                    <p>Try adjusting your search or filters</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 ToolVaults. Community-curated with ❤️</p>
+        </div>
+    </footer>
+
+    <script>
+        let allTools = [];
+        let filteredTools = [];
+        let currentTag = 'all';
+        let categoryData = null;
+
+        // Sample design tools data (replace this with your actual data loading)
+        const sampleDesignData = {
+            "name": "Design Tools",
+            "description": "Creative tools for graphics, UI/UX, and visual content",
+            "icon": "🎨",
+            "lastUpdated": "2025-07-23",
+            "tools": [
+                {
+                    "id": "figma",
+                    "name": "Figma",
+                    "url": "https://figma.com",
+                    "description": "Collaborative interface design tool for creating user interfaces, mobile apps, and websites.",
+                    "icon": "🎨",
+                    "tags": ["ui-design", "prototyping", "collaboration"],
+                    "rating": 4.7,
+                    "isPremium": false
+                },
+                {
+                    "id": "canva",
+                    "name": "Canva",
+                    "url": "https://canva.com",
+                    "description": "Online design platform with templates for social media, presentations, posters and more.",
+                    "icon": "🌟",
+                    "tags": ["graphics", "templates", "social-media"],
+                    "rating": 4.5,
+                    "isPremium": false
+                },
+                {
+                    "id": "adobe-photoshop",
+                    "name": "Adobe Photoshop",
+                    "url": "https://adobe.com/products/photoshop",
+                    "description": "Professional image editing and photo manipulation software.",
+                    "icon": "🖼️",
+                    "tags": ["photo-editing", "graphics", "professional"],
+                    "rating": 4.6,
+                    "isPremium": true
+                },
+                {
+                    "id": "sketch",
+                    "name": "Sketch",
+                    "url": "https://sketch.com",
+                    "description": "Digital design platform for creating user interfaces and user experiences.",
+                    "icon": "✏️",
+                    "tags": ["ui-design", "mac", "prototyping"],
+                    "rating": 4.3,
+                    "isPremium": true
+                },
+                {
+                    "id": "adobe-illustrator",
+                    "name": "Adobe Illustrator",
+                    "url": "https://adobe.com/products/illustrator",
+                    "description": "Vector graphics software for creating logos, icons, drawings, typography and illustrations.",
+                    "icon": "🎯",
+                    "tags": ["vector", "illustration", "logo-design"],
+                    "rating": 4.5,
+                    "isPremium": true
+                },
+                {
+                    "id": "invision",
+                    "name": "InVision",
+                    "url": "https://invisionapp.com",
+                    "description": "Digital product design platform for creating interactive prototypes and design systems.",
+                    "icon": "📱",
+                    "tags": ["prototyping", "collaboration", "design-system"],
+                    "rating": 4.2,
+                    "isPremium": false
+                }
+            ]
+        };
+
+        // Load category data and tools
+        async function loadCategoryData() {
+            try {
+                // Try to load from actual data file
+                const response = await fetch('../data/design.json');
+                if (response.ok) {
+                    categoryData = await response.json();
+                } else {
+                    // Fallback to sample data
+                    categoryData = sampleDesignData;
+                }
+                
+                allTools = categoryData.tools || [];
+                filteredTools = [...allTools];
+                
+                updatePageContent();
+                generateFilterTags();
+                displayTools();
+                updateStats();
+                
+            } catch (error) {
+                console.error('Error loading category data:', error);
+                // Use sample data as fallback
+                categoryData = sampleDesignData;
+                allTools = categoryData.tools || [];
+                filteredTools = [...allTools];
+                
+                updatePageContent();
+                generateFilterTags();
+                displayTools();
+                updateStats();
+            }
+        }
+
+        // Update page content based on category data
+        function updatePageContent() {
+            if (!categoryData) return;
+
+            document.getElementById('pageTitle').textContent = `${categoryData.name} - ToolVaults`;
+            document.getElementById('categoryIcon').textContent = categoryData.icon || '🎨';
+            document.getElementById('categoryName').textContent = categoryData.name || 'Design Tools';
+            document.getElementById('categoryDescription').textContent = categoryData.description || 'Creative tools for graphics, UI/UX, and visual content';
+            document.getElementById('searchInput').placeholder = `Search ${categoryData.name.toLowerCase()}...`;
+        }
+
+        // Generate filter tags from tools data
+        function generateFilterTags() {
+            if (!allTools.length) return;
+
+            const tags = new Set();
+            allTools.forEach(tool => {
+                if (tool.tags) {
+                    tool.tags.forEach(tag => tags.add(tag));
+                }
+            });
+
+            const filterTags = document.getElementById('filterTags');
+            const allButton = filterTags.querySelector('[data-tag="all"]');
+            
+            // Clear existing tags except "All"
+            filterTags.innerHTML = '';
+            filterTags.appendChild(allButton);
+
+            // Add new tags
+            Array.from(tags).sort().forEach(tag => {
+                const button = document.createElement('button');
+                button.className = 'tag';
+                button.dataset.tag = tag;
+                button.textContent = tag.charAt(0).toUpperCase() + tag.slice(1).replace('-', ' ');
+                filterTags.appendChild(button);
+            });
+        }
+
+        // Update category statistics
+        function updateStats() {
+            if (!categoryData || !allTools.length) return;
+
+            const freeTools = allTools.filter(tool => !tool.isPremium).length;
+            const ratedTools = allTools.filter(tool => tool.rating);
+            const avgRating = ratedTools.length > 0 ? 
+                (ratedTools.reduce((sum, tool) => sum + tool.rating, 0) / ratedTools.length).toFixed(1) : 
+                'N/A';
+
+            document.getElementById('totalTools').textContent = allTools.length;
+            document.getElementById('avgRating').textContent = avgRating;
+            document.getElementById('freeTools').textContent = freeTools;
+            document.getElementById('lastUpdated').textContent = categoryData.lastUpdated || '-';
+            document.getElementById('categoryStats').style.display = 'block';
+        }
+
+        // Display tools in grid
+        function displayTools() {
+            const loading = document.getElementById('loading');
+            const toolsGrid = document.getElementById('toolsGrid');
+            const noResults = document.getElementById('noResults');
+
+            loading.style.display = 'none';
+
+            if (filteredTools.length === 0) {
+                toolsGrid.style.display = 'none';
+                noResults.style.display = 'block';
+                return;
+            }
+
+            noResults.style.display = 'none';
+            toolsGrid.style.display = 'grid';
+            toolsGrid.innerHTML = '';
+
+            filteredTools.forEach(tool => {
+                const toolCard = createToolCard(tool);
+                toolsGrid.appendChild(toolCard);
+            });
+        }
+
+        // Create tool card element
+        function createToolCard(tool) {
+            const card = document.createElement('div');
+            card.className = 'tool-card';
+
+            const tagsHtml = tool.tags ? tool.tags.map(tag => 
+                `<span class="tool-tag">${tag.replace('-', ' ')}</span>`
+            ).join('') : '';
+
+            const rating = tool.rating ? 
+                `<div class="rating">
+                    <i class="fas fa-star"></i>
+                    <span>${tool.rating}/5</span>
+                </div>` : '';
+
+            const premiumBadge = tool.isPremium ? 
+                '<div class="premium-badge">Premium</div>' : '';
+
+            card.innerHTML = `
+                ${premiumBadge}
+                <div class="tool-header">
+                    <div class="tool-icon">
+                        ${tool.icon || '🎨'}
+                    </div>
+                    <div class="tool-info">
+                        <h3>${tool.name}</h3>
+                        <div class="url">${new URL(tool.url).hostname}</div>
+                    </div>
+                </div>
+                <div class="tool-description">
+                    ${tool.description}
+                </div>
+                <div class="tool-tags">
+                    ${tagsHtml}
+                </div>
+                <div class="tool-actions">
+                    <a href="${tool.url}" target="_blank" class="visit-btn">
+                        Visit Tool <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    ${rating}
+                </div>
+            `;
+
+            return card;
+        }
+
+        // Filter tools by tag
+        function filterByTag(tag) {
+            if (tag === 'all') {
+                filteredTools = [...allTools];
+            } else {
+                filteredTools = allTools.filter(tool => 
+                    tool.tags && tool.tags.includes(tag)
+                );
+            }
+            
+            const searchQuery = document.getElementById('searchInput').value.trim();
+            if (searchQuery) {
+                searchTools(searchQuery);
+            } else {
+                displayTools();
+            }
+        }
+
+        // Search tools
+        function searchTools(query) {
+            if (!query) {
+                filteredTools = currentTag === 'all' ? [...allTools] : 
+                    allTools.filter(tool => tool.tags && tool.tags.includes(currentTag));
+            } else {
+                const searchQuery = query.toLowerCase();
+                let toolsToSearch = currentTag === 'all' ? allTools : 
+                    allTools.filter(tool => tool.tags && tool.tags.includes(currentTag));
+                
+                filteredTools = toolsToSearch.filter(tool =>
+                    tool.name.toLowerCase().includes(searchQuery) ||
+                    tool.description.toLowerCase().includes(searchQuery) ||
+                    (tool.tags && tool.tags.some(tag => tag.toLowerCase().includes(searchQuery)))
+                );
+            }
+            displayTools();
+        }
+
+        // Show no results message
+        function showNoResults() {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('toolsGrid').style.display = 'none';
+            document.getElementById('noResults').style.display = 'block';
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load category data
+            loadCategoryData();
+
+            // Check for search query in URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchQuery = urlParams.get('search');
+            if (searchQuery) {
+                document.getElementById('searchInput').value = searchQuery;
+                setTimeout(() => searchTools(searchQuery), 500);
+            }
+
+            // Search input
+            document.getElementById('searchInput').addEventListener('input', (e) => {
+                searchTools(e.target.value);
+            });
+
+            // Filter tags
+            document.getElementById('filterTags').addEventListener('click', (e) => {
+                if (e.target.classList.contains('tag')) {
+                    // Update active tag
+                    document.querySelectorAll('.tag').forEach(tag => tag.classList.remove('active'));
+                    e.target.classList.add('active');
+                    
+                    currentTag = e.target.dataset.tag;
+                    filterByTag(currentTag);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
